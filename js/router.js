@@ -10,7 +10,7 @@ function config($httpProvider, $compileProvider, $stateProvider, $urlRouterProvi
             template: '<ui-view/>'
         })
         // setup a parent.inbox state
-        .state('parent.inbox', {
+        .state('parent.dashboard', {
             // tell it what URL we want
             url: '/dashboard',
             data: {
@@ -19,11 +19,11 @@ function config($httpProvider, $compileProvider, $stateProvider, $urlRouterProvi
             },
             views: {
                 '@': {
-                    templateUrl: 'partials/inbox.html',
+                    templateUrl: 'partials/dashboard.html',
                     controller: 'DashboardCtrl as vm'
                 }
-            },
-            resolve: DashboardCtrl.resolve
+            }
+            //,resolve: DashboardCtrl.resolve
         });
         /* .state('parent.dashboard.person', {
             url: '/:id',

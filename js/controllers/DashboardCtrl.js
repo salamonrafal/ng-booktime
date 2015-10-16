@@ -1,9 +1,10 @@
 
-function DashboardCtrl($rootScope, $state, messages) {
+function DashboardCtrl($rootScope, $state //, messages
+) {
 
     var vm = this;
 
-    function goToTrash () {
+   /* function goToTrash () {
 
         angular.forEach(vm.messages, function(message) {
             if (message.checked)  {
@@ -12,21 +13,21 @@ function DashboardCtrl($rootScope, $state, messages) {
             }
         });
 
-    }
+    }*/
 
-    vm.messages = messages;
-    vm.goToTrash = goToTrash;
+    //vm.messages = messages;
+    //vm.goToTrash = goToTrash;
 
 }
 
 // resolve promises before Controller is instantiated
-DashboardCtrl.resolve = {
+/*DashboardCtrl.resolve = {
     // Object property names are the ones that
     // will be injected at runtime
     messages: function (EmailService) {
         return EmailService.getEmails();
     }
-};
+};*/
 
 angular
     .module('tm.ngbooktime') // getter method
