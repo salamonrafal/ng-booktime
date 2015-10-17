@@ -19,12 +19,17 @@ function rsNavigation() {
  *
  * @param $rootScope
  */
-function rsNavigationCtrl($rootScope, $state) {
+function rsNavigationCtrl($rootScope, $state, modalService) {
     var vm = this;
+    console.log(modalService);
+
+    function openFormModal (size) {
+        modalService.open(size);
+    }
 
     // exports
     vm.page = $rootScope.page;
-
+    vm.openFormModal = openFormModal;
 }
 
 angular

@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/ng-booktime-main-theme.css">
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Registration form</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        </div>
+    </script>
+
 </head>
 <body class="bt-normal">
 
     <rs-navigation></rs-navigation>
-
     <div ui-view></div>
 
     <!-- JS lib vendor Angular & Bootsrap directives -->
@@ -33,6 +46,7 @@
 
     <!-- Controllers -->
     <script src="js/controllers/DashboardCtrl.js"></script>
+    <script src="js/controllers/modalFormCtrl.js"></script>
 
     <!-- Directives -->
     <script src="js/directives/rs-navigation.js"></script>
@@ -40,6 +54,7 @@
 
     <!-- Services -->
     <script src="js/services/peopleService.js"></script>
+    <script src="js/services/modalService.js"></script>
 
 
 </body>
