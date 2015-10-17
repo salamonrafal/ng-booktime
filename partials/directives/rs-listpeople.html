@@ -9,9 +9,9 @@
     </thead>
 
     <tbody ng-repeat="person in vm.model">
-        <tr>
+        <tr ng-hide="person.removed">
             <td>
-                <button class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                <button ng-click="vm.onRemovePerson(person.id)" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span></button>
             </td>
             <td ng-bind="person.name"></td>
             <td ng-bind="person.surname"></td>
