@@ -1,6 +1,5 @@
 
-function DashboardCtrl($rootScope, $state //, messages
-) {
+function DashboardCtrl($rootScope, $state, people) {
 
     var vm = this;
 
@@ -15,19 +14,16 @@ function DashboardCtrl($rootScope, $state //, messages
 
     }*/
 
-    //vm.messages = messages;
-    //vm.goToTrash = goToTrash;
+    vm.people = people;
 
 }
 
 // resolve promises before Controller is instantiated
-/*DashboardCtrl.resolve = {
-    // Object property names are the ones that
-    // will be injected at runtime
-    messages: function (EmailService) {
-        return EmailService.getEmails();
+DashboardCtrl.resolve = {
+    people: function(PeopleService){
+        return PeopleService.getPeople();
     }
-};*/
+};
 
 angular
     .module('tm.ngbooktime') // getter method

@@ -3,6 +3,8 @@
  */
 angular
     .module('tm.ngbooktime')
-    .constant('setting', {
-
+    .constant('SETTING', {
+        services: {
+            list: "api/example/people.json"
+        }
     });

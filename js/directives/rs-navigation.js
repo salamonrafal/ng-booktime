@@ -19,10 +19,8 @@ function rsNavigation() {
  *
  * @param $rootScope
  */
-function rsNavigationCtrl($rootScope) {
-
+function rsNavigationCtrl($rootScope, $state) {
     var vm = this;
-
 
     // exports
     vm.page = $rootScope.page;

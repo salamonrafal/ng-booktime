@@ -22,8 +22,8 @@ function config($httpProvider, $compileProvider, $stateProvider, $urlRouterProvi
                     templateUrl: 'partials/dashboard.html',
                     controller: 'DashboardCtrl as vm'
                 }
-            }
-            //,resolve: DashboardCtrl.resolve
+            },
+            resolve: DashboardCtrl.resolve
         });
         /* .state('parent.dashboard.person', {
             url: '/:id',
