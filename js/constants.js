@@ -5,6 +5,7 @@ angular
     .module('tm.ngbooktime')
     .constant('SETTING', {
         services: {
-            list: "api/example/people.json"
+            list: "api/persons.cfc?method=getPersons",
+            add: "api/persons.cfc?method=addPerson"
         }
     });

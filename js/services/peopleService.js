@@ -15,7 +15,6 @@
 function PeopleService($http, SETTING) {
 
     function getPeople() {
-
         return (
             $http
                 .get(SETTING.services.list) // '../api/inbox.json'
@@ -27,8 +26,19 @@ function PeopleService($http, SETTING) {
         );
     }
 
-    function addPeople() {
-
+    function addPeople(data) {
+        $http.get(SETTING.services.add, {
+            'params': data,
+            'headers': {
+                "Accept": "application/json;charset=utf-8",
+                "Accept-Charset":"charset=utf-8"
+            }
+        }) // '../api/inbox.json'
+        .then(function (response) {
+            return response.data;
+        }, function (reason) {
+            return reason;
+        })
     }
 
     return {
