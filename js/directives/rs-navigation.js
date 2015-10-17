@@ -26,10 +26,16 @@ function rsNavigationCtrl($rootScope, $state, modalService, userService) {
         modalService.open(size);
     }
 
+    var isUserAdded = userService.checkIsUserAdded();
+
+    $rootScope.$on('add.person', function (){
+        vm.isUserAdded = userService.checkIsUserAdded();
+    });
+
     // exports
     vm.page = $rootScope.page;
     vm.openFormModal = openFormModal;
-    vm.isUserAdded = userService.checkIsUserAdded();
+    vm.isUserAdded = isUserAdded;
 }
 
 angular

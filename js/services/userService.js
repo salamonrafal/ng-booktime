@@ -2,8 +2,9 @@ function userService($http, $cookies, SETTING) {
 
     function checkIsUserAdded(id) {
         var cookieUserID = $cookies.get('ngbt_userID');
+        console.log(id, cookieUserID);
         if (id === undefined) {
-            if (cookieUserID !== undefined && cookieUserID > 0) {
+            if (cookieUserID !== undefined && cookieUserID != '') {
                 return true;
             }
         } else {
@@ -15,8 +16,8 @@ function userService($http, $cookies, SETTING) {
         return false;
     }
 
-    function saveUserData(id) {
-        return false;
+    function saveUserData(id, data) {
+        $cookies.put('ngbt_userID', id);
     }
 
     function isAdminUser() {
