@@ -36,7 +36,6 @@ function rsListpeopleCtrl($rootScope, $state, userService) {
     }
 
     function checkIsUserAdded(id) {
-        console.log('test');
         return userService.checkIsUserAdded (id);
     }
 

@@ -2,15 +2,12 @@ function userService($http, $cookies, SETTING) {
 
     function checkIsUserAdded(id) {
         var cookieUserID = $cookies.get('ngbt_userID');
-        console.log('is');
         if (id === undefined) {
             if (cookieUserID !== undefined && cookieUserID > 0) {
-                console.log('is');
                 return true;
             }
         } else {
             if (cookieUserID !== undefined && cookieUserID == id) {
-                console.log('is');
                 return true;
             }
         }

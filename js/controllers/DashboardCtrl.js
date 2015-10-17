@@ -3,6 +3,10 @@ function DashboardCtrl($rootScope, $state, people) {
 
     var vm = this;
 
+    $rootScope.$on('add.person', function (event, value){
+        people.push(value);
+    });
+
    /* function goToTrash () {
 
         angular.forEach(vm.messages, function(message) {

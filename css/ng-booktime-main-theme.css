@@ -7,3 +7,7 @@
  *  - #B28969
  *  - #0B0602
  */
+
+.ngbt-nav-item {
+    cursor: pointer;
+}

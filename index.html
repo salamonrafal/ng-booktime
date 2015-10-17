@@ -14,14 +14,17 @@
         </div>
         <div class="modal-body">
             <form name="registerPersonForm" id="registerPersonForm">
+                <div class="alert alert-danger field-name" ng-show="registerPersonForm.personName.$error.required" role="alert">Field <strong>name</strong> is required and cannot be empty</div>
+                <div class="alert alert-danger field-Surname" ng-show="registerPersonForm.personSurname.$error.required" role="alert">Field <strong>Surname</strong> is required and cannot be empty</div>
+
                 <div class="form-group">
-                    <input ng-model="person.name" required type="text" class="form-control" id="personName" placeholder="Name">
+                    <input ng-model="person.name" required type="text" class="form-control" name="personName" id="personName" placeholder="Name">
                 </div>
                 <div class="form-group">
-                    <input ng-model="person.surname" required type="text" class="form-control" id="personSurname" placeholder="Surname">
+                    <input ng-model="person.surname" required type="text" class="form-control" name="personSurname" id="personSurname" placeholder="Surname">
                 </div>
                 <div class="form-group">
-                    <input ng-model="person.note" type="text" class="form-control" id="personNote" placeholder="Note">
+                    <input ng-model="person.note" type="text" class="form-control" name="personNote" id="personNote" placeholder="Note">
                 </div>
             </form>
         </div>
