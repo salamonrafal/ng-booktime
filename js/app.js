@@ -6,5 +6,6 @@ angular
     .module('tm.ngbooktime', [
         'ui.router',
         'ngMessages',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ngCookies'
     ]);

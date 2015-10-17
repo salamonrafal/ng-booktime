@@ -1,0 +1,42 @@
+function userService($http, $cookies, SETTING) {
+
+    function checkIsUserAdded(id) {
+        var cookieUserID = $cookies.get('ngbt_userID');
+        console.log('is');
+        if (id === undefined) {
+            if (cookieUserID !== undefined && cookieUserID > 0) {
+                console.log('is');
+                return true;
+            }
+        } else {
+            if (cookieUserID !== undefined && cookieUserID == id) {
+                console.log('is');
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function saveUserData(id) {
+        return false;
+    }
+
+    function isAdminUser() {
+        return false;
+    }
+
+    function login(pwd) {
+        return false;
+    }
+
+    return {
+        'checkIsUserAdded': checkIsUserAdded,
+        'saveUserData': saveUserData,
+        'login': login,
+        'isAdminUser': isAdminUser
+    };
+}
+angular
+    .module('tm.ngbooktime')
+    .factory('userService', userService);

@@ -19,9 +19,8 @@ function rsNavigation() {
  *
  * @param $rootScope
  */
-function rsNavigationCtrl($rootScope, $state, modalService) {
+function rsNavigationCtrl($rootScope, $state, modalService, userService) {
     var vm = this;
-    console.log(modalService);
 
     function openFormModal (size) {
         modalService.open(size);
@@ -30,6 +29,7 @@ function rsNavigationCtrl($rootScope, $state, modalService) {
     // exports
     vm.page = $rootScope.page;
     vm.openFormModal = openFormModal;
+    vm.isUserAdded = userService.checkIsUserAdded();
 }
 
 angular

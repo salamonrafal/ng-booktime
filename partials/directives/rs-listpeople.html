@@ -1,21 +1,20 @@
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th>Actions</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Note</th>
+            <th>Actions</th>
         </tr>
     </thead>
-
     <tbody ng-repeat="person in vm.model">
-        <tr ng-hide="person.removed">
-            <td>
-                <button ng-click="vm.onRemovePerson(person.id)" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span></button>
-            </td>
+        <tr ng-hide="person.removed" ng-class="{'active': vm.checkIsUserAdded(person.id)}">
             <td ng-bind="person.name"></td>
             <td ng-bind="person.surname"></td>
             <td ng-bind="person.note"></td>
+            <td>
+                <button ng-show="vm.checkIsUserAdded(person.id)" ng-click="vm.onRemovePerson(person.id)" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span></button>
+            </td>
         </tr>
     </tbody>
 </table>

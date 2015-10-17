@@ -22,7 +22,7 @@ function rsListpeople() {
  *
  * @param $rootScope
  */
-function rsListpeopleCtrl($rootScope, $state) {
+function rsListpeopleCtrl($rootScope, $state, userService) {
     var vm = this;
 
     function removePerson(id) {
@@ -34,8 +34,15 @@ function rsListpeopleCtrl($rootScope, $state) {
             }
         }
     }
+
+    function checkIsUserAdded(id) {
+        console.log('test');
+        return userService.checkIsUserAdded (id);
+    }
+
     // exports
     vm.onRemovePerson = removePerson;
+    vm.checkIsUserAdded = checkIsUserAdded;
 }
 
 angular

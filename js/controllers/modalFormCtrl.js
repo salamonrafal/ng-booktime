@@ -2,7 +2,8 @@
 function modalFormCtrl($rootScope, $modalInstance) {
     var vm = this;
 
-    vm.ok = function () {
+    vm.ok = function (person) {
+        console.log(person);
         $modalInstance.close();
     };
 

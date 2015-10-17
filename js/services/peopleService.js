@@ -20,7 +20,6 @@ function PeopleService($http, SETTING) {
             $http
                 .get(SETTING.services.list) // '../api/inbox.json'
                 .then(function (response) {
-                    console.log(response);
                     return response.data;
                 }, function (reason) {
                     return reason;
