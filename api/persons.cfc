@@ -34,10 +34,12 @@ component  {
       string note = ''
     ) {
       getpagecontext().getcfoutput().clearall();
+      local.isExists = isPersonExists(arguments.id);
 
-      local.query = new Query();
-      local.query.setDataSource(this.dsn);
-      local.sql = "INSERT INTO [STEPSTONE-ASA\salamr01].[_person_kickoff_2016]"
+      if (!local.isExists){
+        local.query = new Query();
+        local.query.setDataSource(this.dsn);
+        local.sql ="INSERT INTO [STEPSTONE-ASA\salamr01].[_person_kickoff_2016]"
         & "([person_id]"
         & ",[person_name]"
         & ",[person_surname]"
@@ -48,19 +50,52 @@ component  {
         & ",:surname"
         & ",:note)";
 
-      query.addParam (name = "id", value = htmlEditFormat(arguments.id), cfsqltype = "cf_sql_nvarchar");
-      query.addParam (name = "name", value = htmlEditFormat(arguments.name), cfsqltype = "cf_sql_nvarchar");
-      query.addParam (name = "surname", value = htmlEditFormat(arguments.surname), cfsqltype = "cf_sql_nvarchar");
-      query.addParam (name = "note", value = htmlEditFormat(arguments.note), cfsqltype = "cf_sql_nvarchar");
+        local.query.addParam (name ="id", value = htmlEditFormat(arguments.id), cfsqltype ="cf_sql_nvarchar");
+        local.query.addParam (name ="name", value = htmlEditFormat(arguments.name), cfsqltype ="cf_sql_nvarchar");
+        local.query.addParam (name ="surname", value = htmlEditFormat(arguments.surname), cfsqltype ="cf_sql_nvarchar");
+        local.query.addParam (name ="note", value = htmlEditFormat(arguments.note), cfsqltype ="cf_sql_nvarchar");
 
-      local.query.setSQL(local.sql);
-      local.query.execute();
+        local.query.setSQL(local.sql);
+        local.query.execute();
+      }
+
       local.response = {
         'done' = true,
+        'exists' = local.isExists,
         'arguments' = arguments
       };
 
       writeOutput(serializeJSON(local.response));
       abort;
     }
+
+  remote function deletPerson(required string id) {
+    getpagecontext().getcfoutput().clearall();
+
+    local.query = new Query();
+    local.query.setDataSource(this.dsn);
+    local.sql = "DELETE FROM [STEPSTONE-ASA\salamr01].[_person_kickoff_2016] WHERE [person_id] = :id";
+    local.query.addParam (name = "id", value = htmlEditFormat(arguments.id), cfsqltype = "cf_sql_nvarchar");
+    local.query.setSQL(local.sql);
+    local.query.execute();
+
+    local.response = {
+      'done' = true,
+      'arguments' = arguments
+    };
+
+    writeOutput(serializeJSON(local.response));
+    abort;
+  }
+
+  private boolean function isPersonExists(required string id) {
+    local.query = new Query();
+    local.query.setDataSource(this.dsn);
+    local.sql = "SELECT COUNT(*) AS [LEN] FROM [STEPSTONE-ASA\salamr01].[_person_kickoff_2016] WHERE [person_id] = :id";
+    local.query.addParam (name = "id", value = htmlEditFormat(arguments.id), cfsqltype = "cf_sql_nvarchar");
+    local.query.setSQL(local.sql);
+    local.results = local.query.execute().getResult();
+
+    return (local.results['LEN'][1] > 0 ? true : false);
+  }
 }

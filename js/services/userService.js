@@ -2,7 +2,6 @@ function userService($http, $cookies, SETTING) {
 
     function checkIsUserAdded(id) {
         var cookieUserID = $cookies.get('ngbt_userID');
-        console.log(id, cookieUserID);
         if (id === undefined) {
             if (cookieUserID !== undefined && cookieUserID != '') {
                 return true;
@@ -16,8 +15,12 @@ function userService($http, $cookies, SETTING) {
         return false;
     }
 
-    function saveUserData(id, data) {
+    function saveUserData(id) {
         $cookies.put('ngbt_userID', id);
+    }
+
+    function deleteUserData() {
+        $cookies.put('ngbt_userID', '');
     }
 
     function isAdminUser() {
@@ -32,7 +35,8 @@ function userService($http, $cookies, SETTING) {
         'checkIsUserAdded': checkIsUserAdded,
         'saveUserData': saveUserData,
         'login': login,
-        'isAdminUser': isAdminUser
+        'isAdminUser': isAdminUser,
+        'deleteUserData': deleteUserData
     };
 }
 angular

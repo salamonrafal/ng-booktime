@@ -36,9 +36,20 @@ function modalFormCtrl($rootScope, $modalInstance, userService, PeopleService) {
             person.surname = removePolishCharacters(person.surname);
 
             person.id = person.name + person.surname;
-            userService.saveUserData(person.id, person);
-            PeopleService.addPeople(person);
-            $rootScope.$emit('add.person', person);
+            var response_data = PeopleService.addPeople(person);
+
+            response_data.then(function(value){
+                console.log(value);
+
+                userService.saveUserData(person.id);
+
+                if (!value.exists){
+                    $rootScope.$emit('add.person', person);
+                } else {
+                    $rootScope.$emit('exists.person', person);
+                }
+            });
+
             $modalInstance.close();
         }
     }

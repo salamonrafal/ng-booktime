@@ -27,23 +27,35 @@ function PeopleService($http, SETTING) {
     }
 
     function addPeople(data) {
-        $http.get(SETTING.services.add, {
-            'params': data,
-            'headers': {
-                "Accept": "application/json;charset=utf-8",
-                "Accept-Charset":"charset=utf-8"
-            }
-        }) // '../api/inbox.json'
+        return (
+            $http.get(SETTING.services.add, {
+                'params': data,
+                'headers': {}
+            })
+            .then(function (response) {
+                return response.data;
+            }, function (reason) {
+                return reason;
+            })
+        );
+    }
+
+    function deletePerson(id) {
+        $http.get(SETTING.services.delete, {
+            'params': {'id': id},
+            'headers': {}
+        })
         .then(function (response) {
             return response.data;
         }, function (reason) {
             return reason;
-        })
+        });
     }
 
     return {
         getPeople: getPeople,
-        addPeople: addPeople
+        addPeople: addPeople,
+        deletePerson: deletePerson
     };
 }
 angular

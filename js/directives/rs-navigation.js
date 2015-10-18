@@ -32,6 +32,14 @@ function rsNavigationCtrl($rootScope, $state, modalService, userService) {
         vm.isUserAdded = userService.checkIsUserAdded();
     });
 
+    $rootScope.$on('delete.person', function (){
+        vm.isUserAdded = userService.checkIsUserAdded();
+    });
+
+    $rootScope.$on('exists.person', function (){
+        vm.isUserAdded = userService.checkIsUserAdded();
+    });
+
     // exports
     vm.page = $rootScope.page;
     vm.openFormModal = openFormModal;

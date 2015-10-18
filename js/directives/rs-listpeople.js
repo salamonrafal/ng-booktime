@@ -22,7 +22,7 @@ function rsListpeople() {
  *
  * @param $rootScope
  */
-function rsListpeopleCtrl($rootScope, $state, userService) {
+function rsListpeopleCtrl($rootScope, $state, userService, PeopleService) {
     var vm = this;
 
     function removePerson(id) {
@@ -31,6 +31,9 @@ function rsListpeopleCtrl($rootScope, $state, userService) {
         for (var i = 0; i < model.length; i++) {
             if (model[i].id == id) {
                 model[i].removed = true;
+                PeopleService.deletePerson(id);
+                userService.deleteUserData();
+                $rootScope.$emit('delete.person', id);
             }
         }
     }
